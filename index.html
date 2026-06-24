@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>eFootball Card Gen</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Library to help us download the image -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+
+    <div class="app-container">
+        <h1>Card Generator</h1>
+        
+        <div class="controls">
+            <input type="text" id="nameInput" placeholder="Player Name" oninput="updateCard()">
+            <input type="text" id="posInput" placeholder="Position (e.g., ST)" oninput="updateCard()">
+            <input type="number" id="ratingInput" placeholder="Rating (e.g., 95)" oninput="updateCard()">
+            <button onclick="downloadCard()">Download Card</button>
+        </div>
+
+        <div class="card" id="card">
+            <div class="card-content">
+                <h1 id="cardRating">--</h1>
+                <h2 id="cardPos">POS</h2>
+                <h3 id="cardName">PLAYER NAME</h3>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
