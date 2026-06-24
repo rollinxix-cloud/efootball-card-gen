@@ -1,21 +1,16 @@
 function updateCard() {
     const name = document.getElementById("nameInput").value;
-    const squad = document.getElementById("squadInput").value;
-    const playstyle = document.getElementById("playstyleInput").value;
+    const pos = document.getElementById("posInput").value;
     const rating = document.getElementById("ratingInput").value;
-    const stars = parseInt(document.getElementById("starsInput").value);
+    const year = document.getElementById("yearInput").value;
 
-    // Update Text Fields
-    document.getElementById("cardName").innerText = name || "JON BONZ";
-    document.getElementById("cardSquad").innerText = squad || "REAL MADRID";
-    document.getElementById("cardPlaystyle").innerText = playstyle;
-    document.getElementById("cardRating").innerText = rating || "74";
-
-    // Update Star Element Output
-    document.getElementById("cardStars").innerText = "⭐".repeat(stars);
+    // Direct interface injection values
+    document.getElementById("cardName").innerText = name || "CRISTIANO RONALDO";
+    document.getElementById("cardPos").innerText = pos || "CF";
+    document.getElementById("cardRating").innerText = rating || "110";
+    document.getElementById("cardYear").innerText = year || "2014/15";
 }
 
-// Convert local image files into absolute visual canvas memory layers safely
 function handleImageUpload(event) {
     const file = event.target.files[0];
     if (file) {
@@ -31,14 +26,13 @@ function handleImageUpload(event) {
 function downloadCard() {
     const cardElement = document.getElementById("card");
     
-    // Captures layout cleanly at high pixel density with no artifacts
     html2canvas(cardElement, {
-        scale: 2, 
+        scale: 3, // Premium ultra-high resolution asset generation
         backgroundColor: null,
         useCORS: true
     }).then(canvas => {
         let link = document.createElement("a");
-        link.download = "efootball-2026-pro-card.png";
+        link.download = "efootball-epic-card-asset.png";
         link.href = canvas.toDataURL("image/png");
         link.click();
     });

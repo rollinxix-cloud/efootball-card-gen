@@ -3,70 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>eFootball 2026 Pro Card Creator</title>
+    <title>eFootball Epic Card Engine</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Image downloader library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
 
     <div class="app-container">
-        <h1>eFootball 2026 Card Engine</h1>
+        <h1>eFootball Epic Card Engine</h1>
         
         <div class="controls">
-            <input type="text" id="nameInput" placeholder="Manager / Gamer Name" oninput="updateCard()">
-            <input type="text" id="squadInput" placeholder="Squad / Team Name (e.g., REAL MADRID)" oninput="updateCard()">
+            <input type="text" id="nameInput" placeholder="Player Name" oninput="updateCard()">
+            <input type="text" id="posInput" placeholder="Position (e.g., LWF, CF, RWF)" oninput="updateCard()">
+            <input type="number" id="ratingInput" placeholder="Overall Rating (e.g., 110)" oninput="updateCard()">
+            <input type="text" id="yearInput" placeholder="Season/Year (e.g., 2014/15)" oninput="updateCard()">
             
-            <label class="control-label">Team Playstyle</label>
-            <select id="playstyleInput" onchange="updateCard()">
-                <option value="POSSESSION GAME">Possession Game</option>
-                <option value="QUICK COUNTER">Quick Counter</option>
-                <option value="LONG BALL COUNTER">Long Ball Counter</option>
-                <option value="OUT WIDE">Out Wide</option>
-            </select>
-
-            <label class="control-label">Card Rarity Tier</label>
-            <select id="starsInput" onchange="updateCard()">
-                <option value="5">⭐⭐⭐⭐⭐ (5 Star Epic)</option>
-                <option value="4">⭐⭐⭐⭐ (4 Star Feature)</option>
-                <option value="3">⭐⭐⭐ (3 Star Standard)</option>
-            </select>
-            
-            <input type="number" id="ratingInput" placeholder="Overall Rating (e.g., 74)" oninput="updateCard()">
-            
-            <label class="control-label">Upload Player/Manager Cutout</label>
+            <label class="control-label">Upload Player Cutout</label>
             <input type="file" id="imageLoader" accept="image/*" onchange="handleImageUpload(event)">
             
-            <button onclick="downloadCard()">Download Card Asset</button>
+            <button onclick="downloadCard()">Export Epic Card</button>
         </div>
 
-        <!-- Replicating efootball-2026-squad-card.jpg Layout Layout -->
+        <!-- The Re-engineered Card Layout -->
         <div class="card" id="card">
-            <!-- Background Structure Panels -->
-            <div class="bg-left-stripe"></div>
-            <div class="bg-right-gradient"></div>
+            <!-- Advanced Sci-Fi Tech Effects Layer -->
+            <div class="cyber-grid"></div>
+            <div class="glow-flare"></div>
             
-            <!-- Dynamic Player Profile Layer -->
+            <!-- Dynamic Player Profile -->
             <img id="cardPlayerImg" class="player-graphic" src="" alt="">
 
-            <!-- Floating Interface Elements -->
-            <div class="rating-box">
-                <span id="cardRating">74</span>
+            <!-- Floating Top Interface Elements -->
+            <div class="top-meta">
+                <div class="rating-group">
+                    <div id="cardRating">110</div>
+                    <div id="cardPos">CF</div>
+                </div>
             </div>
             
-            <div class="playstyle-pill" id="cardPlaystyle">POSSESSION GAME</div>
-
-            <!-- Descriptive Text Hierarchy -->
+            <!-- Lower Typography Layout -->
             <div class="card-details">
-                <div class="stars-container" id="cardStars">⭐⭐⭐⭐⭐</div>
-                <div class="squad-title" id="cardSquad">REAL MADRID</div>
-                <div class="manager-name" id="cardName">JON BONZ</div>
+                <div class="season-year" id="cardYear">2014/15</div>
+                <div class="player-name" id="cardName">CRISTIANO RONALDO</div>
             </div>
 
-            <!-- Footer Structure -->
-            <div class="card-footer">
-                <div class="footer-divider"></div>
-                <div class="footer-brand">EFOOTBALL™ 2026</div>
+            <!-- Authentic Tech Bottom Podium Base -->
+            <div class="podium-base">
+                <div class="podium-hardware">
+                    <div class="efootball-badge">e</div>
+                    <div class="stars-row">⭐⭐⭐⭐⭐</div>
+                </div>
             </div>
         </div>
     </div>
