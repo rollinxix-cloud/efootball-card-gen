@@ -1,16 +1,24 @@
 function updateCard() {
     const name = document.getElementById("nameInput").value;
-    const pos = document.getElementById("posInput").value;
     const rating = document.getElementById("ratingInput").value;
     const year = document.getElementById("yearInput").value;
+    const cardType = document.getElementById("cardTypeInput").value;
+    const stars = parseInt(document.getElementById("starsInput").value);
 
-    // Direct interface injection values
-    document.getElementById("cardName").innerText = name || "CRISTIANO RONALDO";
-    document.getElementById("cardPos").innerText = pos || "CF";
-    document.getElementById("cardRating").innerText = rating || "110";
-    document.getElementById("cardYear").innerText = year || "2014/15";
+    // Update Text Blocks with clear fallbacks
+    document.getElementById("cardName").innerText = name || "BINAYA SHRESTHA";
+    document.getElementById("cardRating").innerText = rating || "105";
+    document.getElementById("cardYear").innerText = year || "2026/27";
+
+    // Handle Star Output dynamically
+    document.getElementById("cardStars").innerText = "⭐".repeat(stars);
+
+    // Swap Background Core Layout Engine Tiers smoothly
+    const cardElement = document.getElementById("card");
+    cardElement.className = "card " + cardType;
 }
 
+// Convert uploaded media cleanly into absolute visual layout pixels
 function handleImageUpload(event) {
     const file = event.target.files[0];
     if (file) {
@@ -26,13 +34,14 @@ function handleImageUpload(event) {
 function downloadCard() {
     const cardElement = document.getElementById("card");
     
+    // Captures canvas elements at high-definition zoom layers flawlessly
     html2canvas(cardElement, {
-        scale: 3, // Premium ultra-high resolution asset generation
+        scale: 3, 
         backgroundColor: null,
         useCORS: true
     }).then(canvas => {
         let link = document.createElement("a");
-        link.download = "efootball-epic-card-asset.png";
+        link.download = "efootball-squad-asset.png";
         link.href = canvas.toDataURL("image/png");
         link.click();
     });
