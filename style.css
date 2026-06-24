@@ -1,6 +1,6 @@
 body { 
     font-family: 'Impact', 'Arial Black', sans-serif; 
-    background: #050b11; 
+    background: #03070c; 
     color: white; 
     display: flex; 
     justify-content: center; 
@@ -13,10 +13,10 @@ body {
     gap: 25px; 
 }
 h1 {
-    font-size: 22px;
+    font-size: 20px;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    background: linear-gradient(90deg, #5eff00, #ffbb00);
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, #00ffcc, #ffbc00);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin: 0;
@@ -25,177 +25,223 @@ h1 {
     display: flex; 
     flex-direction: column; 
     gap: 12px; 
-    width: 340px; 
-    background: #0b1622;
+    width: 350px; 
+    background: #09111a;
     padding: 20px;
-    border-radius: 14px;
-    border: 1px solid #1a2d42;
+    border-radius: 16px;
+    border: 1px solid #142436;
     box-sizing: border-box;
 }
 .control-label {
-    color: #7991a8; 
+    color: #7d93a8; 
     font-size: 11px; 
     text-transform: uppercase;
-    margin-bottom: -4px;
+    margin-bottom: -5px;
+    letter-spacing: 0.5px;
 }
-input { 
+input, select { 
     padding: 12px; 
-    border-radius: 6px; 
-    border: 1px solid #1f3752; 
-    background: #07101a;
+    border-radius: 8px; 
+    border: 1px solid #1c324a; 
+    background: #050b12;
     color: white;
     font-size: 14px;
 }
-input:focus {
+input:focus, select:focus {
     outline: none;
-    border-color: #5eff00;
+    border-color: #00ffcc;
 }
 button { 
-    padding: 14px; 
-    background: linear-gradient(135deg, #5eff00 0%, #00aa50 100%); 
+    padding: 15px; 
+    background: linear-gradient(135deg, #00ffcc 0%, #00a3ff 100%); 
     color: #000; 
     border: none; 
-    border-radius: 6px; 
+    border-radius: 8px; 
     cursor: pointer; 
     font-weight: 900; 
     text-transform: uppercase;
-    margin-top: 10px;
-    box-shadow: 0 4px 15px rgba(94, 255, 0, 0.3);
+    margin-top: 8px;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 20px rgba(0, 255, 204, 0.25);
 }
 
-/* Authentic Epic Card Frame from 1000027475.png */
+/* ==========================================
+   ADVANCED AUTHENTIC CARD STYLES ENGINE
+========================================== */
 .card {
     width: 340px; 
-    height: 490px;
-    background: #020f08;
+    height: 495px;
     position: relative;
     overflow: hidden;
-    border-radius: 12px;
-    /* Layered Dual Green-Neon and Gold Border Effects */
-    border: 4px solid #5eff00;
-    box-shadow: 0 0 25px rgba(94, 255, 0, 0.4), inset 0 0 20px rgba(255, 187, 0, 0.3);
+    border-radius: 24px;
     box-sizing: border-box;
+    transition: all 0.3s ease;
 }
 
-/* Explosive Cyber Background Vector Effects */
-.cyber-grid {
-    position: absolute;
-    width: 100%; height: 100%;
-    top: 0; left: 0;
+/* --- OPTION 1: EPIC / BIG TIME THEME --- */
+.card.epic {
+    border: 5px solid #62ff00;
+    box-shadow: 0 0 30px rgba(98, 255, 0, 0.35), inset 0 0 25px rgba(255, 187, 0, 0.4);
+}
+.card.epic .cyber-background {
+    background: radial-gradient(circle at 50% 40%, #16461a 0%, #031408 80%);
+}
+.card.epic .laser-lines {
+    background: repeating-linear-gradient(45deg, transparent, transparent 15px, rgba(255, 187, 0, 0.04) 15px, rgba(255, 187, 0, 0.04) 30px);
+}
+.card.epic #cardRating {
+    color: #fff600;
+    text-shadow: 3px 3px 0px #aa6f00, 5px 5px 10px rgba(0,0,0,0.8);
+}
+
+/* --- OPTION 2: TRENDING / SHOW TIME THEME --- */
+.card.trending {
+    border: 5px solid #ff0055;
+    box-shadow: 0 0 30px rgba(255, 0, 85, 0.4), inset 0 0 25px rgba(255, 115, 0, 0.3);
+}
+.card.trending .cyber-background {
+    background: radial-gradient(circle at 50% 45%, #4a081c 0%, #0f0206 80%);
+}
+.card.trending .laser-lines {
     background: 
-        linear-gradient(215deg, rgba(255,145,0,0.2) 0%, transparent 50%),
-        linear-gradient(35deg, rgba(94,255,0,0.15) 0%, transparent 60%),
-        radial-gradient(circle at 70% 30%, #206116 0%, #03140a 70%);
-    z-index: 1;
+        linear-gradient(125deg, rgba(255,102,0,0.15) 0%, transparent 60%),
+        repeating-linear-gradient(-45deg, transparent, transparent 12px, rgba(255, 0, 85, 0.05) 12px, rgba(255, 0, 85, 0.05) 24px);
 }
-.glow-flare {
-    position: absolute;
-    width: 150%; height: 150%;
-    top: -25%; left: -25%;
-    background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 187, 0, 0.03) 10px, rgba(255, 187, 0, 0.03) 20px);
-    z-index: 1;
-    transform: rotate(-15deg);
+.card.trending #cardRating {
+    color: #ffffff;
+    text-shadow: 3px 3px 0px #ff0055, 5px 5px 12px rgba(0,0,0,0.9);
 }
 
-/* Translucent Image Overlay Support */
-.player-graphic {
+/* --- OPTION 3: STANDARD THEME --- */
+.card.standard {
+    border: 5px solid #00d2ff;
+    box-shadow: 0 0 25px rgba(0, 210, 255, 0.3), inset 0 0 20px rgba(0,0,0,0.6);
+}
+.card.standard .cyber-background {
+    background: radial-gradient(circle at 50% 50%, #0c2336 0%, #030a12 100%);
+}
+.card.standard .laser-lines {
+    background: repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(0, 210, 255, 0.02) 20px, rgba(0, 210, 255, 0.02) 22px);
+}
+.card.standard #cardRating {
+    color: #00d2ff;
+    text-shadow: 2px 2px 0px #003c57, 4px 4px 6px rgba(0,0,0,0.8);
+}
+
+/* --- CRITICAL: AUTO PHOTO CROP & FADE ENGINE --- */
+.player-frame {
     position: absolute;
-    bottom: 30px;
-    right: -20px;
-    width: 90%;
-    height: 85%;
-    object-fit: contain;
-    object-position: bottom center;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     z-index: 2;
-    mask-image: linear-gradient(to top, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
+    /* Clean transparent fade structure at the bottom edge */
+    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 22%, rgba(0,0,0,1) 100%);
+    mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 22%, rgba(0,0,0,1) 100%);
+}
+.player-graphic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Auto-crops perfectly to match mobile view ratios */
+    object-position: center 15%; /* Keeps focus squarely on faces/shoulders */
 }
 
-/* Epic Massive Metallic Top-Left Text Elements */
-.top-meta {
+/* Structural Background Utilities */
+.cyber-background, .laser-lines, .vignette-shadow {
     position: absolute;
-    top: 15px; left: 15px;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+}
+.cyber-background { z-index: 1; }
+.laser-lines { z-index: 1; }
+.vignette-shadow {
+    background: radial-gradient(circle at 50% 50%, transparent 40%, rgba(0,0,0,0.6) 100%);
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* Typography & Layout Placements */
+.rating-badge {
+    position: absolute;
+    top: 15px; left: 20px;
     z-index: 4;
 }
-.rating-group {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    line-height: 0.85;
-}
 #cardRating {
-    font-size: 72px;
-    color: #fffb00;
-    -webkit-text-stroke: 2px #000;
-    text-shadow: 3px 3px 0px #cf8c00, 5px 5px 10px rgba(0,0,0,0.8);
-}
-#cardPos {
-    font-size: 24px;
-    color: #ffffff;
-    letter-spacing: 1px;
-    margin-left: 4px;
-    margin-top: 5px;
-    text-shadow: 2px 2px 4px #000;
+    font-size: 78px;
+    font-weight: 900;
+    -webkit-text-stroke: 2px rgba(0,0,0,0.6);
+    line-height: 1;
 }
 
-/* Lower Typography Mechanics */
 .card-details {
     position: absolute;
-    bottom: 75px;
+    bottom: 85px;
     width: 100%;
     text-align: center;
     z-index: 4;
 }
 .season-year {
     font-size: 12px;
-    color: #ffbb00;
-    letter-spacing: 1px;
+    color: #ffbc00;
     font-family: sans-serif;
     font-weight: bold;
-    text-shadow: 1px 1px 3px #000;
+    letter-spacing: 1.5px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+    margin-bottom: 2px;
 }
 .player-name {
     font-size: 24px;
     color: #ffffff;
     text-transform: uppercase;
-    text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
-    letter-spacing: 0.5px;
+    letter-spacing: -0.5px;
+    /* Implements bold 3D outline styling from the console look */
+    text-shadow: 
+        2px 2px 0px #000, -2px -2px 0px #000, 
+        2px -2px 0px #000, -2px 2px 0px #000,
+        0px 4px 8px rgba(0,0,0,0.8);
 }
 
-/* Core Tech Hardware Platform Base Piece */
-.podium-base {
+/* Precise Iconic Base Pedestal */
+.podium-pedestal {
     position: absolute;
-    bottom: -2px;
+    bottom: -1px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80%;
-    height: 55px;
-    background: #111512;
-    border: 2px solid #ffbb00;
+    width: 82%;
+    height: 58px;
+    background: #060c12;
+    border: 2px solid rgba(255,255,255,0.15);
     border-bottom: none;
-    border-radius: 12px 12px 0 0;
-    z-index: 4;
-    box-shadow: 0 -5px 15px rgba(0,0,0,0.6);
-    clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
+    border-radius: 14px 14px 0 0;
+    z-index: 5;
+    box-shadow: 0 -10px 25px rgba(0,0,0,0.7);
+    clip-path: polygon(12% 0%, 88% 0%, 100% 100%, 0% 100%);
 }
-.podium-hardware {
+.card.epic .podium-pedestal { border-color: #62ff00; }
+.card.trending .podium-pedestal { border-color: #ff0055; }
+.card.standard .podium-pedestal { border-color: #00d2ff; }
+
+.podium-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100%;
-    padding-top: 2px;
+    padding-top: 4px;
 }
-.efootball-badge {
-    background: linear-gradient(135deg, #00e1ff, #0051ff);
+.efootball-logo-sphere {
+    background: linear-gradient(135deg, #00f0ff, #0055ff);
     color: white;
     font-size: 11px;
-    width: 16px; height: 16px;
+    width: 18px; height: 18px;
     border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
     font-weight: bold;
     margin-bottom: 2px;
+    box-shadow: 0 0 8px #00f0ff;
 }
 .stars-row {
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 2px;
-}
+        }
