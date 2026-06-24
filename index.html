@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>eFootball 2026 Card Generator</title>
+    <title>eFootball 2026 Pro Card Creator</title>
     <link rel="stylesheet" href="style.css">
     <!-- Image downloader library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -11,42 +11,62 @@
 <body>
 
     <div class="app-container">
-        <h1>eFootball 2026 Card Creator</h1>
+        <h1>eFootball 2026 Card Engine</h1>
         
         <div class="controls">
             <input type="text" id="nameInput" placeholder="Manager / Gamer Name" oninput="updateCard()">
-            <input type="text" id="squadInput" placeholder="Squad Name (e.g., Barca Hub)" oninput="updateCard()">
+            <input type="text" id="squadInput" placeholder="Squad / Team Name (e.g., REAL MADRID)" oninput="updateCard()">
             
-            <label style="color: #aaa; font-size: 12px; margin-bottom: -5px;">Team Playstyle</label>
+            <label class="control-label">Team Playstyle</label>
             <select id="playstyleInput" onchange="updateCard()">
-                <option value="QUICK COUNTER">Quick Counter</option>
                 <option value="POSSESSION GAME">Possession Game</option>
+                <option value="QUICK COUNTER">Quick Counter</option>
                 <option value="LONG BALL COUNTER">Long Ball Counter</option>
                 <option value="OUT WIDE">Out Wide</option>
             </select>
+
+            <label class="control-label">Card Rarity Tier</label>
+            <select id="starsInput" onchange="updateCard()">
+                <option value="5">⭐⭐⭐⭐⭐ (5 Star Epic)</option>
+                <option value="4">⭐⭐⭐⭐ (4 Star Feature)</option>
+                <option value="3">⭐⭐⭐ (3 Star Standard)</option>
+            </select>
             
-            <input type="number" id="ratingInput" placeholder="Team Rating (e.g., 102)" oninput="updateCard()">
-            <button onclick="downloadCard()">Download Card</button>
+            <input type="number" id="ratingInput" placeholder="Overall Rating (e.g., 74)" oninput="updateCard()">
+            
+            <label class="control-label">Upload Player/Manager Cutout</label>
+            <input type="file" id="imageLoader" accept="image/*" onchange="handleImageUpload(event)">
+            
+            <button onclick="downloadCard()">Download Card Asset</button>
         </div>
 
-        <!-- Real eFootball 2026 Themed Card Layout -->
+        <!-- Replicating efootball-2026-squad-card.jpg Layout Layout -->
         <div class="card" id="card">
-            <div class="glow-effect"></div>
+            <!-- Background Structure Panels -->
+            <div class="bg-left-stripe"></div>
+            <div class="bg-right-gradient"></div>
             
-            <div class="card-header">
-                <div class="rating-badge">
-                    <span id="cardRating">102</span>
-                </div>
-                <div class="playstyle-tag" id="cardPlaystyle">QUICK COUNTER</div>
+            <!-- Dynamic Player Profile Layer -->
+            <img id="cardPlayerImg" class="player-graphic" src="" alt="">
+
+            <!-- Floating Interface Elements -->
+            <div class="rating-box">
+                <span id="cardRating">74</span>
+            </div>
+            
+            <div class="playstyle-pill" id="cardPlaystyle">POSSESSION GAME</div>
+
+            <!-- Descriptive Text Hierarchy -->
+            <div class="card-details">
+                <div class="stars-container" id="cardStars">⭐⭐⭐⭐⭐</div>
+                <div class="squad-title" id="cardSquad">REAL MADRID</div>
+                <div class="manager-name" id="cardName">JON BONZ</div>
             </div>
 
-            <div class="card-body">
-                <div class="squad-title" id="cardSquad">SQUAD NAME</div>
-                <div class="manager-name" id="cardName">MANAGER NAME</div>
-            </div>
-
+            <!-- Footer Structure -->
             <div class="card-footer">
-                <div class="efootball-logo">eFootball™ 2026</div>
+                <div class="footer-divider"></div>
+                <div class="footer-brand">EFOOTBALL™ 2026</div>
             </div>
         </div>
     </div>
