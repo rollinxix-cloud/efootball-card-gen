@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>eFootball 2026 Tournament Card Creator</title>
-    <link rel="stylesheet" href="style.css?v=4.0">
+    <title>eFootball 2026 Card Creator</title>
+    <link rel="stylesheet" href="style.css?v=5.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
@@ -33,13 +33,13 @@
                 <option value="1">⭐ (1 Star)</option>
             </select>
             
-            <label class="control-label">Upload Player Photo</label>
+            <label class="control-label">Upload Player Photo (Use transparent PNG for best results)</label>
             <input type="file" id="imageLoader" accept="image/*" onchange="handleImageUpload(event)">
 
-            <label class="control-label">Perfect Tuning Suite</label>
+            <label class="control-label">Position Fine Tuning</label>
             <div class="slider-group">
                 <span>Image Size</span>
-                <input type="range" id="sizeSlider" min="100" max="600" step="5" value="340" oninput="updateCard()">
+                <input type="range" id="sizeSlider" min="150" max="600" step="5" value="340" oninput="updateCard()">
             </div>
             <div class="slider-group">
                 <span>Move Left/Right</span>
@@ -55,10 +55,11 @@
 
         <div class="card epic" id="card">
             <div class="card-bg"></div>
-            <div class="overlay-glow"></div>
+            <div class="card-glow-vortex"></div>
             
             <div class="player-frame">
                 <img id="cardPlayerImg" class="player-graphic" src="" alt="">
+                <div class="player-fade-overlay"></div>
             </div>
 
             <div class="rating-badge">
@@ -79,6 +80,6 @@
         </div>
     </div>
 
-    <script src="script.js?v=4.0"></script>
+    <script src="script.js?v=5.0"></script>
 </body>
 </html>
