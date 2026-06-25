@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>eFootball 2026 Tournament Card Creator</title>
-    <link rel="stylesheet" href="style.css?v=3.0">
+    <link rel="stylesheet" href="style.css?v=4.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
@@ -19,9 +19,9 @@
             
             <label class="control-label">Card Style Design</label>
             <select id="cardTypeInput" onchange="updateCard()">
-                <option value="epic">✨ Epic / Big Time (Gold & Green Glow)</option>
-                <option value="trending">🔥 Trending / Show Time (Neon Red & Orange)</option>
-                <option value="standard">⚡ Standard Pro (Deep Blue Cyber)</option>
+                <option value="epic">✨ Epic / Big Time (Gold & Green)</option>
+                <option value="trending">🔥 Trending / Show Time (Neon Red)</option>
+                <option value="standard">⚡ Standard Pro (Deep Blue)</option>
             </select>
 
             <label class="control-label">Card Rarity Tier</label>
@@ -32,41 +32,33 @@
                 <option value="2">⭐⭐ (2 Stars)</option>
                 <option value="1">⭐ (1 Star)</option>
             </select>
-
-            <label class="control-label">Photo Blend Mode (Fix Background Overlap)</label>
-            <select id="blendInput" onchange="updateCard()">
-                <option value="normal">Normal (Solid Cutout Image)</option>
-                <option value="screen" selected>Screen (Auto-Remove Dark Backgrounds)</option>
-                <option value="lighten">Lighten (Blend into Cyber Glow)</option>
-            </select>
             
             <label class="control-label">Upload Player Photo</label>
             <input type="file" id="imageLoader" accept="image/*" onchange="handleImageUpload(event)">
 
-            <label class="control-label">Perfect Fit Suite</label>
+            <label class="control-label">Perfect Tuning Suite</label>
             <div class="slider-group">
-                <span>Zoom</span>
-                <input type="range" id="zoomSlider" min="0.5" max="3" step="0.05" value="1" oninput="updateCard()">
+                <span>Image Size</span>
+                <input type="range" id="sizeSlider" min="100" max="600" step="5" value="340" oninput="updateCard()">
             </div>
             <div class="slider-group">
-                <span>Move X</span>
-                <input type="range" id="xSlider" min="-150" max="150" step="2" value="0" oninput="updateCard()">
+                <span>Move Left/Right</span>
+                <input type="range" id="xSlider" min="-200" max="200" step="2" value="0" oninput="updateCard()">
             </div>
             <div class="slider-group">
-                <span>Move Y</span>
-                <input type="range" id="ySlider" min="-150" max="150" step="2" value="0" oninput="updateCard()">
+                <span>Move Up/Down</span>
+                <input type="range" id="ySlider" min="-200" max="200" step="2" value="40" oninput="updateCard()">
             </div>
             
             <button onclick="downloadCard()">Download Ultra-HQ Card</button>
         </div>
 
         <div class="card epic" id="card">
-            <div class="cyber-background"></div>
-            <div class="laser-lines"></div>
-            <div class="vignette-shadow"></div>
+            <div class="card-bg"></div>
+            <div class="overlay-glow"></div>
             
             <div class="player-frame">
-                <div id="cardPlayerImg" class="player-graphic"></div>
+                <img id="cardPlayerImg" class="player-graphic" src="" alt="">
             </div>
 
             <div class="rating-badge">
@@ -87,6 +79,6 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=4.0"></script>
 </body>
 </html>
