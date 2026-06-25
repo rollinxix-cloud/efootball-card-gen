@@ -4,29 +4,30 @@ function updateCard() {
     const year = document.getElementById("yearInput").value;
     const cardType = document.getElementById("cardTypeInput").value;
     const stars = parseInt(document.getElementById("starsInput").value);
-    const blendMode = document.getElementById("blendInput").value;
 
-    // Manual slider coordinate extraction 
-    const zoom = document.getElementById("zoomSlider").value;
+    // Direct High-Density layout inputs
+    const size = document.getElementById("sizeSlider").value;
     const shiftX = document.getElementById("xSlider").value;
     const shiftY = document.getElementById("ySlider").value;
 
-    // Text Sync Updates
+    // Synchronize content strings
     document.getElementById("cardName").innerText = name || "BINAYA SHRESTHA";
     document.getElementById("cardRating").innerText = rating || "105";
     document.getElementById("cardYear").innerText = year || "2026/27";
     document.getElementById("cardStars").innerText = "⭐".repeat(stars);
 
-    // Swap Background Core Layout Tiers
+    // Update Theme Class
     const cardElement = document.getElementById("card");
     cardElement.className = "card " + cardType;
 
-    // Apply hardware accelerated parameters safely without stretching original image file dimensions
-    const graphicElement = document.getElementById("cardPlayerImg");
-    graphicElement.style.setProperty('--img-scale', zoom);
-    graphicElement.style.setProperty('--img-x', shiftX + 'px');
-    graphicElement.style.setProperty('--img-y', shiftY + 'px');
-    graphicElement.style.setProperty('--img-blend', blendMode);
+    // Pure Layout Mutation Engine (Completely protects pixel density from blurring)
+    const imgElement = document.getElementById("cardPlayerImg");
+    if (imgElement.style.display === "block") {
+        imgElement.style.width = size + "px";
+        imgElement.style.left = "50%";
+        imgElement.style.marginLeft = (shiftX - (size / 2)) + "px";
+        imgElement.style.top = shiftY + "px";
+    }
 }
 
 function handleImageUpload(event) {
@@ -34,9 +35,10 @@ function handleImageUpload(event) {
     if (file) {
         const reader = new FileReader();
         reader.onload = function(e) {
-            const outputDiv = document.getElementById('cardPlayerImg');
-            outputDiv.style.backgroundImage = "url('" + e.target.result + "')";
-            updateCard(); // Fires frame setup instantaneously 
+            const imgElement = document.getElementById('cardPlayerImg');
+            imgElement.src = e.target.result;
+            imgElement.style.display = "block";
+            updateCard(); // Refresh layout setup immediately
         }
         reader.readAsDataURL(file);
     }
@@ -45,7 +47,7 @@ function handleImageUpload(event) {
 function downloadCard() {
     const cardElement = document.getElementById("card");
     
-    // Configured at scale 4 with explicitly enabled image smoothing engines for perfect asset output
+    // Scale 4 creates a massively high-res final asset file
     html2canvas(cardElement, {
         scale: 4, 
         backgroundColor: null,
@@ -55,8 +57,9 @@ function downloadCard() {
         imageSmoothingQuality: 'high'
     }).then(canvas => {
         let link = document.createElement("a");
-        link.download = "efootball-ultra-hq-squad-asset.png";
+        link.download = "efootball-ultra-hd-card.png";
         link.href = canvas.toDataURL("image/png", 1.0);
         link.click();
     });
-}
+        }
+            
