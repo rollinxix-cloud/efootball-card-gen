@@ -80,7 +80,7 @@ button {
     box-shadow: 0 5px 20px rgba(0, 255, 204, 0.25);
 }
 
-/* Base Card Object Setup */
+/* Base Blueprint Setup */
 .card {
     width: 340px; 
     height: 495px;
@@ -90,80 +90,92 @@ button {
     box-sizing: border-box;
 }
 
-/* Stable Solid Background System (Safe for Canvas Processing) */
-.card-bg, .overlay-glow {
+/* Universal Canvas Background Utilities */
+.card-bg, .card-glow-vortex {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
 }
 .card-bg { z-index: 1; }
-.overlay-glow {
-    z-index: 3;
-    pointer-events: none;
-    background: radial-gradient(circle at 50% 50%, transparent 30%, rgba(0,0,0,0.65) 100%);
-}
+.card-glow-vortex { z-index: 2; }
 
-/* --- EPIC CARD STYLING --- */
+/* --- THEME 1: EPIC DESIGN (Green Stadium Aura) --- */
 .card.epic { border: 5px solid #62ff00; }
 .card.epic .card-bg {
-    background: linear-gradient(180deg, #184e1d 0%, #061f0a 60%, #020a03 100%);
+    background: linear-gradient(180deg, #133d17 0%, #051a09 60%, #010702 100%);
 }
-.card.epic .overlay-glow {
-    box-shadow: inset 0 0 40px rgba(98, 255, 0, 0.5);
+.card.epic .card-glow-vortex {
+    background: radial-gradient(circle at 50% 35%, rgba(98, 255, 0, 0.4) 0%, transparent 70%);
 }
 .card.epic #cardRating {
     color: #fff600;
     text-shadow: 3px 3px 0px #aa6f00, 4px 4px 8px rgba(0,0,0,0.7);
 }
+.card.epic .player-fade-overlay {
+    background: linear-gradient(to top, #010702 0%, rgba(1, 7, 2, 0) 100%);
+}
 
-/* --- TRENDING CARD STYLING --- */
+/* --- THEME 2: TRENDING DESIGN (Neon Crimson Aura) --- */
 .card.trending { border: 5px solid #ff0055; }
 .card.trending .card-bg {
-    background: linear-gradient(180deg, #52091e 0%, #21020a 60%, #0a0003 100%);
+    background: linear-gradient(180deg, #440718 0%, #170106 60%, #050001 100%);
 }
-.card.trending .overlay-glow {
-    box-shadow: inset 0 0 40px rgba(255, 0, 85, 0.5);
+.card.trending .card-glow-vortex {
+    background: radial-gradient(circle at 50% 35%, rgba(255, 0, 85, 0.45) 0%, transparent 70%);
 }
 .card.trending #cardRating {
     color: #ffffff;
     text-shadow: 3px 3px 0px #ff0055, 4px 4px 8px rgba(0,0,0,0.7);
 }
+.card.trending .player-fade-overlay {
+    background: linear-gradient(to top, #050001 0%, rgba(5, 0, 1, 0) 100%);
+}
 
-/* --- STANDARD PRO STYLING --- */
+/* --- THEME 3: STANDARD PRO DESIGN (Cyber Blue Aura) --- */
 .card.standard { border: 5px solid #00d2ff; }
 .card.standard .card-bg {
-    background: linear-gradient(180deg, #0a263d 0%, #031220 60%, #01060c 100%);
+    background: linear-gradient(180deg, #081f33 0%, #020e1a 60%, #000408 100%);
 }
-.card.standard .overlay-glow {
-    box-shadow: inset 0 0 35px rgba(0, 210, 255, 0.4);
+.card.standard .card-glow-vortex {
+    background: radial-gradient(circle at 50% 35%, rgba(0, 210, 255, 0.4) 0%, transparent 70%);
 }
 .card.standard #cardRating {
     color: #00d2ff;
     text-shadow: 2px 2px 0px #004466, 4px 4px 6px rgba(0,0,0,0.7);
 }
+.card.standard .player-fade-overlay {
+    background: linear-gradient(to top, #000408 0%, rgba(0, 4, 8, 0) 100%);
+}
 
-/* --- THE PICTURE FRAME WINDOW (CRITICAL SHARP FIX) --- */
+/* --- SAFE PHOTO GRAPHIC WINDOW --- */
 .player-frame {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    z-index: 2;
-    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 100%);
-    mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 100%);
+    z-index: 3;
+    overflow: hidden;
 }
 .player-graphic {
     position: absolute;
-    display: none; /* Controlled by JavaScript when uploaded */
-    /* Prevents the browser from blurring high-res images */
+    display: none;
+    /* Keeps images clean and razor sharp during scale transforms */
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
 }
+.player-fade-overlay {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%;
+    height: 140px;
+    z-index: 4;
+    pointer-events: none;
+}
 
-/* Foreground Content Overlays */
+/* Typography Overlays */
 .rating-badge {
     position: absolute;
     top: 12px; left: 20px;
-    z-index: 4;
+    z-index: 5;
 }
 #cardRating {
     font-size: 82px;
@@ -175,7 +187,7 @@ button {
     bottom: 82px;
     width: 100%;
     text-align: center;
-    z-index: 4;
+    z-index: 5;
 }
 .season-year {
     font-size: 12px;
@@ -195,18 +207,18 @@ button {
         2px -2px 0px #000, -2px 2px 0px #000,
         0px 4px 8px rgba(0,0,0,0.8);
 }
+
+/* Redesigned structural pedestal capsule (canvas readable alternative) */
 .podium-pedestal {
     position: absolute;
-    bottom: -1px; left: 50%;
+    bottom: 12px; left: 50%;
     transform: translateX(-50%);
-    width: 82%; height: 58px;
-    background: #060c12;
-    border: 2px solid rgba(255,255,255,0.15);
-    border-bottom: none;
-    border-radius: 14px 14px 0 0;
-    z-index: 5;
-    box-shadow: 0 -10px 25px rgba(0,0,0,0.7);
-    clip-path: polygon(12% 0%, 88% 0%, 100% 100%, 0% 100%);
+    width: 84%; height: 48px;
+    background: rgba(5, 11, 18, 0.95);
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    z-index: 6;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.6);
 }
 .card.epic .podium-pedestal { border-color: #62ff00; }
 .card.trending .podium-pedestal { border-color: #ff0055; }
@@ -218,16 +230,15 @@ button {
     align-items: center;
     justify-content: center;
     height: 100%;
-    padding-top: 4px;
 }
 .efootball-logo-sphere {
     background: linear-gradient(135deg, #00f0ff, #0055ff);
     color: white;
     font-size: 11px;
-    width: 18px; height: 18px;
+    width: 16px; height: 16px;
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-weight: bold; margin-bottom: 2px;
-    box-shadow: 0 0 8px #00f0ff;
+    font-weight: bold; margin-bottom: 1px;
+    box-shadow: 0 0 6px #00f0ff;
 }
 .stars-row { font-size: 11px; letter-spacing: 2px; }
