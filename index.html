@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>eFootball 2026 Tournament Card Creator</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Image downloader library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
@@ -40,14 +41,17 @@
         </div>
 
         <div class="card epic" id="card">
+            <!-- Background Elements -->
             <div class="cyber-background"></div>
             <div class="laser-lines"></div>
             <div class="vignette-shadow"></div>
             
+            <!-- FIXED: Converted to a div container to stop html2canvas download distortion -->
             <div class="player-frame">
-                <img id="cardPlayerImg" class="player-graphic" src="" alt="">
+                <div id="cardPlayerImg" class="player-graphic"></div>
             </div>
 
+            <!-- Foreground Interface Overlays -->
             <div class="rating-badge">
                 <span id="cardRating">105</span>
             </div>
