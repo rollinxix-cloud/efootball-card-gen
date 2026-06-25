@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>eFootball 2026 Tournament Card Creator</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Image downloader library -->
+    <!-- Cache-busting query string added to force immediate deployment updates -->
+    <link rel="stylesheet" href="style.css?v=2.0">
+    
+    <!-- Image downloader & AI Face Tracking Engine Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tracking.js/1.1.3/tracking-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tracking.js/1.1.3/data/face-min.js"></script>
 </head>
 <body>
 
@@ -34,7 +38,7 @@
                 <option value="1">⭐ (1 Star)</option>
             </select>
             
-            <label class="control-label">Upload Player Photo (Auto-Blends)</label>
+            <label class="control-label">Upload Player Photo (Auto Face Alignment)</label>
             <input type="file" id="imageLoader" accept="image/*" onchange="handleImageUpload(event)">
             
             <button onclick="downloadCard()">Download Card Asset</button>
@@ -46,9 +50,9 @@
             <div class="laser-lines"></div>
             <div class="vignette-shadow"></div>
             
-            <!-- FIXED: Converted to a div container to stop html2canvas download distortion -->
+            <!-- Structural Box with Pixel-Perfect Alignment Execution -->
             <div class="player-frame">
-                <div id="cardPlayerImg" class="player-graphic"></div>
+                <img id="cardPlayerImg" class="player-graphic" src="" alt="" style="position: absolute; left: 0; top: 0;">
             </div>
 
             <!-- Foreground Interface Overlays -->
@@ -69,6 +73,9 @@
             </div>
         </div>
     </div>
+
+    <!-- Hidden element for face tracking preprocessing initialization -->
+    <img id="tempTrackerImg" style="display: none; position: absolute; visibility: hidden;">
 
     <script src="script.js"></script>
 </body>
