@@ -65,9 +65,7 @@ button {
     box-shadow: 0 5px 20px rgba(0, 255, 204, 0.25);
 }
 
-/* ==========================================
-   ADVANCED AUTHENTIC CARD STYLES ENGINE
-========================================== */
+/* Base Card Blueprint Setup */
 .card {
     width: 340px; 
     height: 495px;
@@ -76,73 +74,6 @@ button {
     border-radius: 24px;
     box-sizing: border-box;
     transition: all 0.3s ease;
-}
-
-/* --- OPTION 1: EPIC / BIG TIME THEME --- */
-.card.epic {
-    border: 5px solid #62ff00;
-    box-shadow: 0 0 30px rgba(98, 255, 0, 0.35), inset 0 0 25px rgba(255, 187, 0, 0.4);
-}
-.card.epic .cyber-background {
-    background: radial-gradient(circle at 50% 40%, #16461a 0%, #031408 80%);
-}
-.card.epic .laser-lines {
-    background: repeating-linear-gradient(45deg, transparent, transparent 15px, rgba(255, 187, 0, 0.04) 15px, rgba(255, 187, 0, 0.04) 30px);
-}
-.card.epic #cardRating {
-    color: #fff600;
-    text-shadow: 3px 3px 0px #aa6f00, 5px 5px 10px rgba(0,0,0,0.8);
-}
-
-/* --- OPTION 2: TRENDING / SHOW TIME THEME --- */
-.card.trending {
-    border: 5px solid #ff0055;
-    box-shadow: 0 0 30px rgba(255, 0, 85, 0.4), inset 0 0 25px rgba(255, 115, 0, 0.3);
-}
-.card.trending .cyber-background {
-    background: radial-gradient(circle at 50% 45%, #4a081c 0%, #0f0206 80%);
-}
-.card.trending .laser-lines {
-    background: 
-        linear-gradient(125deg, rgba(255,102,0,0.15) 0%, transparent 60%),
-        repeating-linear-gradient(-45deg, transparent, transparent 12px, rgba(255, 0, 85, 0.05) 12px, rgba(255, 0, 85, 0.05) 24px);
-}
-.card.trending #cardRating {
-    color: #ffffff;
-    text-shadow: 3px 3px 0px #ff0055, 5px 5px 12px rgba(0,0,0,0.9);
-}
-
-/* --- OPTION 3: STANDARD THEME --- */
-.card.standard {
-    border: 5px solid #00d2ff;
-    box-shadow: 0 0 25px rgba(0, 210, 255, 0.3), inset 0 0 20px rgba(0,0,0,0.6);
-}
-.card.standard .cyber-background {
-    background: radial-gradient(circle at 50% 50%, #0c2336 0%, #030a12 100%);
-}
-.card.standard .laser-lines {
-    background: repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(0, 210, 255, 0.02) 20px, rgba(0, 210, 255, 0.02) 22px);
-}
-.card.standard #cardRating {
-    color: #00d2ff;
-    text-shadow: 2px 2px 0px #003c57, 4px 4px 6px rgba(0,0,0,0.8);
-}
-
-/* --- CRITICAL: AUTO PHOTO CROP & FADE ENGINE --- */
-.player-frame {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    z-index: 2;
-    /* Clean transparent fade structure at the bottom edge */
-    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 22%, rgba(0,0,0,1) 100%);
-    mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 22%, rgba(0,0,0,1) 100%);
-}
-.player-graphic {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Auto-crops perfectly to match mobile view ratios */
-    object-position: center 15%; /* Keeps focus squarely on faces/shoulders */
 }
 
 /* Structural Background Utilities */
@@ -157,6 +88,105 @@ button {
     background: radial-gradient(circle at 50% 50%, transparent 40%, rgba(0,0,0,0.6) 100%);
     z-index: 3;
     pointer-events: none;
+}
+
+/* ==========================================================================
+   DYNAMIC BACKGROUND GLOWING CONFIGURATIONS (VARYING BY THEME)
+   ========================================================================== */
+
+/* --- THEME 1: EPIC / BIG TIME (Gold & Green Stadium Vortex) --- */
+.card.epic {
+    border: 5px solid #62ff00;
+    box-shadow: 0 0 30px rgba(98, 255, 0, 0.35), inset 0 0 25px rgba(255, 187, 0, 0.4);
+}
+.card.epic .cyber-background {
+    background: 
+        /* Concentric Stadium Spotlight directly behind the player profile */
+        radial-gradient(circle at 50% 35%, #62ff00 0%, transparent 55%),
+        /* Outer Halo Ring structures */
+        radial-gradient(circle at 50% 35%, transparent 35%, rgba(255, 187, 0, 0.3) 37%, transparent 45%),
+        radial-gradient(circle at 50% 35%, transparent 55%, rgba(98, 255, 0, 0.2) 58%, transparent 62%),
+        linear-gradient(180deg, #16461a 0%, #031408 100%);
+}
+.card.epic .laser-lines {
+    background: 
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(255,255,255,0.02) 1px, transparent 1px),
+        repeating-linear-gradient(45deg, transparent, transparent 15px, rgba(255, 187, 0, 0.04) 15px, rgba(255, 187, 0, 0.04) 30px);
+    background-size: 14px 14px, 14px 14px, auto;
+}
+.card.epic #cardRating {
+    color: #fff600;
+    text-shadow: 3px 3px 0px #aa6f00, 5px 5px 10px rgba(0,0,0,0.8);
+}
+
+/* --- THEME 2: TRENDING / SHOW TIME (Neon Red & Intense Orange Vortex) --- */
+.card.trending {
+    border: 5px solid #ff0055;
+    box-shadow: 0 0 30px rgba(255, 0, 85, 0.4), inset 0 0 25px rgba(255, 115, 0, 0.3);
+}
+.card.trending .cyber-background {
+    background: 
+        /* Neon Red center core flash overlay */
+        radial-gradient(circle at 50% 35%, #ff0055 0%, transparent 50%),
+        /* High-energy peripheral orange halo accents */
+        radial-gradient(circle at 50% 35%, transparent 30%, #ff6a00 33%, transparent 42%),
+        radial-gradient(circle at 50% 35%, transparent 50%, #ffbb00 53%, transparent 58%),
+        linear-gradient(180deg, #4a081c 0%, #0f0206 100%);
+}
+.card.trending .laser-lines {
+    background: 
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(125deg, rgba(255,102,0,0.15) 0%, transparent 60%),
+        repeating-linear-gradient(-45deg, transparent, transparent 12px, rgba(255, 0, 85, 0.05) 12px, rgba(255, 0, 85, 0.05) 24px);
+    background-size: 14px 14px, 14px 14px, auto, auto;
+}
+.card.trending #cardRating {
+    color: #ffffff;
+    text-shadow: 3px 3px 0px #ff0055, 5px 5px 12px rgba(0,0,0,0.9);
+}
+
+/* --- THEME 3: STANDARD PRO (Deep Blue Cyber Flash) --- */
+.card.standard {
+    border: 5px solid #00d2ff;
+    box-shadow: 0 0 25px rgba(0, 210, 255, 0.3), inset 0 0 20px rgba(0,0,0,0.6);
+}
+.card.standard .cyber-background {
+    background: 
+        /* Cyber-ambient stadium backlighting flares */
+        radial-gradient(circle at 50% 35%, #00d2ff 0%, transparent 60%),
+        radial-gradient(circle at 50% 35%, transparent 40%, rgba(0, 210, 255, 0.25) 42%, transparent 50%),
+        linear-gradient(180deg, #0c2336 0%, #030a12 100%);
+}
+.card.standard .laser-lines {
+    background: 
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(255,255,255,0.02) 1px, transparent 1px),
+        repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(0, 210, 255, 0.02) 20px, rgba(0, 210, 255, 0.02) 22px);
+    background-size: 14px 14px, 14px 14px, auto;
+}
+.card.standard #cardRating {
+    color: #00d2ff;
+    text-shadow: 2px 2px 0px #003c57, 4px 4px 6px rgba(0,0,0,0.8);
+}
+
+
+/* --- FIXED: CRITICAL AUTO-CROP GRAPHIC CONTAINER SETUP --- */
+.player-frame {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 2;
+    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 22%, rgba(0,0,0,1) 100%);
+    mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 22%, rgba(0,0,0,1) 100%);
+}
+.player-graphic {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 15%; /* Locks frame focus cleanly onto faces/shoulders */
 }
 
 /* Typography & Layout Placements */
@@ -193,7 +223,6 @@ button {
     color: #ffffff;
     text-transform: uppercase;
     letter-spacing: -0.5px;
-    /* Implements bold 3D outline styling from the console look */
     text-shadow: 
         2px 2px 0px #000, -2px -2px 0px #000, 
         2px -2px 0px #000, -2px 2px 0px #000,
@@ -244,4 +273,5 @@ button {
 .stars-row {
     font-size: 11px;
     letter-spacing: 2px;
-        }
+                        }
+            
