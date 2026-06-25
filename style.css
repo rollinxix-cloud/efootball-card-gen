@@ -91,7 +91,7 @@ button {
 }
 
 /* ==========================================================================
-   DYNAMIC BACKGROUND GLOWING CONFIGURATIONS (VARYING BY THEME)
+   DYNAMIC BACKGROUND GLOWING CONFIGURATIONS
    ========================================================================== */
 
 /* --- THEME 1: EPIC / BIG TIME (Gold & Green Stadium Vortex) --- */
@@ -101,9 +101,7 @@ button {
 }
 .card.epic .cyber-background {
     background: 
-        /* Concentric Stadium Spotlight directly behind the player profile */
         radial-gradient(circle at 50% 35%, #62ff00 0%, transparent 55%),
-        /* Outer Halo Ring structures */
         radial-gradient(circle at 50% 35%, transparent 35%, rgba(255, 187, 0, 0.3) 37%, transparent 45%),
         radial-gradient(circle at 50% 35%, transparent 55%, rgba(98, 255, 0, 0.2) 58%, transparent 62%),
         linear-gradient(180deg, #16461a 0%, #031408 100%);
@@ -127,9 +125,7 @@ button {
 }
 .card.trending .cyber-background {
     background: 
-        /* Neon Red center core flash overlay */
         radial-gradient(circle at 50% 35%, #ff0055 0%, transparent 50%),
-        /* High-energy peripheral orange halo accents */
         radial-gradient(circle at 50% 35%, transparent 30%, #ff6a00 33%, transparent 42%),
         radial-gradient(circle at 50% 35%, transparent 50%, #ffbb00 53%, transparent 58%),
         linear-gradient(180deg, #4a081c 0%, #0f0206 100%);
@@ -154,7 +150,6 @@ button {
 }
 .card.standard .cyber-background {
     background: 
-        /* Cyber-ambient stadium backlighting flares */
         radial-gradient(circle at 50% 35%, #00d2ff 0%, transparent 60%),
         radial-gradient(circle at 50% 35%, transparent 40%, rgba(0, 210, 255, 0.25) 42%, transparent 50%),
         linear-gradient(180deg, #0c2336 0%, #030a12 100%);
@@ -171,25 +166,21 @@ button {
     text-shadow: 2px 2px 0px #003c57, 4px 4px 6px rgba(0,0,0,0.8);
 }
 
-
-/* --- FIXED: CRITICAL AUTO-CROP GRAPHIC CONTAINER SETUP --- */
+/* --- FIXED CRITICAL POSITIONAL WINDOW --- */
 .player-frame {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
     z-index: 2;
-    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 22%, rgba(0,0,0,1) 100%);
-    mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 22%, rgba(0,0,0,1) 100%);
+    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 18%, rgba(0,0,0,1) 100%);
+    mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 18%, rgba(0,0,0,1) 100%);
 }
 .player-graphic {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center 15%; /* Locks frame focus cleanly onto faces/shoulders */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 }
 
-/* Typography & Layout Placements */
+/* Typography Elements */
 .rating-badge {
     position: absolute;
     top: 15px; left: 20px;
@@ -201,7 +192,6 @@ button {
     -webkit-text-stroke: 2px rgba(0,0,0,0.6);
     line-height: 1;
 }
-
 .card-details {
     position: absolute;
     bottom: 85px;
@@ -228,15 +218,11 @@ button {
         2px -2px 0px #000, -2px 2px 0px #000,
         0px 4px 8px rgba(0,0,0,0.8);
 }
-
-/* Precise Iconic Base Pedestal */
 .podium-pedestal {
     position: absolute;
-    bottom: -1px;
-    left: 50%;
+    bottom: -1px; left: 50%;
     transform: translateX(-50%);
-    width: 82%;
-    height: 58px;
+    width: 82%; height: 58px;
     background: #060c12;
     border: 2px solid rgba(255,255,255,0.15);
     border-bottom: none;
@@ -263,15 +249,9 @@ button {
     font-size: 11px;
     width: 18px; height: 18px;
     border-radius: 50%;
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-    font-weight: bold;
-    margin-bottom: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; margin-bottom: 2px;
     box-shadow: 0 0 8px #00f0ff;
 }
-.stars-row {
-    font-size: 11px;
-    letter-spacing: 2px;
-                        }
-            
+.stars-row { font-size: 11px; letter-spacing: 2px; }
+                        
