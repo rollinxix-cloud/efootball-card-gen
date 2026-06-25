@@ -4,13 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>eFootball 2026 Tournament Card Creator</title>
-    <!-- Cache-busting query string added to force immediate deployment updates -->
-    <link rel="stylesheet" href="style.css?v=2.0">
-    
-    <!-- Image downloader & AI Face Tracking Engine Libraries -->
+    <link rel="stylesheet" href="style.css?v=3.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tracking.js/1.1.3/tracking-min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tracking.js/1.1.3/data/face-min.js"></script>
 </head>
 <body>
 
@@ -37,25 +32,43 @@
                 <option value="2">⭐⭐ (2 Stars)</option>
                 <option value="1">⭐ (1 Star)</option>
             </select>
+
+            <label class="control-label">Photo Blend Mode (Fix Background Overlap)</label>
+            <select id="blendInput" onchange="updateCard()">
+                <option value="normal">Normal (Solid Cutout Image)</option>
+                <option value="screen" selected>Screen (Auto-Remove Dark Backgrounds)</option>
+                <option value="lighten">Lighten (Blend into Cyber Glow)</option>
+            </select>
             
-            <label class="control-label">Upload Player Photo (Auto Face Alignment)</label>
+            <label class="control-label">Upload Player Photo</label>
             <input type="file" id="imageLoader" accept="image/*" onchange="handleImageUpload(event)">
+
+            <label class="control-label">Perfect Fit Suite</label>
+            <div class="slider-group">
+                <span>Zoom</span>
+                <input type="range" id="zoomSlider" min="0.5" max="3" step="0.05" value="1" oninput="updateCard()">
+            </div>
+            <div class="slider-group">
+                <span>Move X</span>
+                <input type="range" id="xSlider" min="-150" max="150" step="2" value="0" oninput="updateCard()">
+            </div>
+            <div class="slider-group">
+                <span>Move Y</span>
+                <input type="range" id="ySlider" min="-150" max="150" step="2" value="0" oninput="updateCard()">
+            </div>
             
-            <button onclick="downloadCard()">Download Card Asset</button>
+            <button onclick="downloadCard()">Download Ultra-HQ Card</button>
         </div>
 
         <div class="card epic" id="card">
-            <!-- Background Elements -->
             <div class="cyber-background"></div>
             <div class="laser-lines"></div>
             <div class="vignette-shadow"></div>
             
-            <!-- Structural Box with Pixel-Perfect Alignment Execution -->
             <div class="player-frame">
-                <img id="cardPlayerImg" class="player-graphic" src="" alt="" style="position: absolute; left: 0; top: 0;">
+                <div id="cardPlayerImg" class="player-graphic"></div>
             </div>
 
-            <!-- Foreground Interface Overlays -->
             <div class="rating-badge">
                 <span id="cardRating">105</span>
             </div>
@@ -73,9 +86,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Hidden element for face tracking preprocessing initialization -->
-    <img id="tempTrackerImg" style="display: none; position: absolute; visibility: hidden;">
 
     <script src="script.js"></script>
 </body>
